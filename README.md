@@ -1,21 +1,7 @@
-# Ansible role: ansible_role_XYZ
-[![CI](https://github.com/origox/ansible_role_XYZ/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/origox/ansible_role_XYZ/actions/workflows/ci.yml)
+# Ansible role: ansible_role_pihole
+[![CI](https://github.com/origox/ansible_role_pihole/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/origox/ansible_role_pihole/actions/workflows/ci.yml)
 
-An Ansible role that install and configure XYZ
-
-## Intial Setup after using template repo
-
-1. Perform initial setup after using this template repo
-
-Run from cmdline `grep -irl XYZ --exclude-dir=venv . | xargs sed -i 's/XYZ/git/gI'`
-Note, replace NAME_OF_ROLE with your new name of Ansible role
-
-2. Update tasks for actual configuration of new role.
-3. Add needed directories
-   - templates # i.e. jinja templates
-   - meta, vars, ... 
-4. Adapt readme file to new role 
-5. Remove this chapter since it belongs only to creation phase of a new role. 
+An Ansible role that install and configure pihole
 
 ## Development and local test of new role
 ```bash
@@ -42,7 +28,7 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    XYZ_config:
+    pihole_config:
       <section>:
         <key>: <value>
 
@@ -55,4 +41,4 @@ None.
     - hosts: all
       roles:
         - role: 
-            src: https://github.com/origox/ansible_role_XYZ 
+            src: https://github.com/origox/ansible_role_pihole 

@@ -1,9 +1,9 @@
 ---
 galaxy_info:
-  role_name: ansible_role_xyz
+  role_name: ansible_role_pihole
   author: origox
-  description: Install and configure xyz
-  issue_tracker_url: https://github.com/origox/ansible_role_xyz/issues
+  description: Install and configure pihole
+  issue_tracker_url: https://github.com/origox/ansible_role_pihole/issues
   company: NA
   license: "license (BSD, MIT)"
   min_ansible_version: "2.4"

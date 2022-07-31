@@ -1,7 +1,32 @@
 ---
-- name: Ensure git is installed
-  ansible.builtin.apt:
-    name: git
-    state: present
-    update_cache: yes
-  become: true
+- name: Check if Pi-hole is installed
+  ansible.builtin.stat:
+    path: "/usr/local/bin/pihole"
+  register: pihole_installed
+
+- name: Create Pi-Hole configuration directory
+  ansible.builtin.file:
+    name: "{{ pihole_path_config }}"
+    state: directory
+    owner: "{{ user_pihole }}"
+    group: "{{ user_pihole }}"
+    mode: 0755
+
+- name: Setup initial and needed configuration for unattended upgrade
+  ansible.builtin.template:
+    src: "setupVars.conf.j2"
+    dest: "{{ pihole_path_config }}/setupVars.conf"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Clone the Pi-Hole repo
+  ansible.builtin.git:
+    repo: https://github.com/pi-hole/pi-hole.git
+    depth: 1
+    dest: "{{ ansible_env.HOME }}/Downloads/pi-hole"
+    version: master
+
+- name: Run Pi-Hole install script
+  ansible.builtin.shell: "'{{ ansible_env.HOME }}/Downloads/pi-hole/automated install/basic-install.sh' --unattended >> {{ ansible_env.HOME }}/Downloads/pihole_install.log"
+  when: pi_hole_installed

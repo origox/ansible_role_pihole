@@ -1,1 +1,5 @@
 ---
+pihole_user: root
+pihole_group: root
+
+pihole_path_config: "/etc/pihole"

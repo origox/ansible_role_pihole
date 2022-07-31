@@ -4,6 +4,6 @@
   gather_facts: true
     
   tasks:
-    - name: "Include origox.ansible_role_XYZ"
+    - name: "Include origox.ansible_role_pihole"
       ansible.builtin.include_role:
-        name: "origox.ansible_role_xyz"
+        name: "origox.ansible_role_pihole"
