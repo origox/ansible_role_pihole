@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+    
+  tasks:
+    - name: "Include origox.ansible_role_XYZ"
+      ansible.builtin.include_role:
+        name: "origox.ansible_role_xyz"
