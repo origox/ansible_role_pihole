@@ -28,9 +28,14 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    pihole_config:
-      <section>:
-        <key>: <value>
+   pihole_custom_dns: [
+   {
+     "192.168.1.1": "router.local"
+   },
+   {
+     "192.168.1.2": "service.local"
+   } 
+]
 
 ## Dependencies
 
