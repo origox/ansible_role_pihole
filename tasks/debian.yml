@@ -8,8 +8,8 @@
   ansible.builtin.file:
     name: "{{ pihole_path_config }}"
     state: directory
-    owner: "{{ user_pihole }}"
-    group: "{{ user_pihole }}"
+    owner: "{{ pihole_user }}"
+    group: "{{ pihole_group }}"
     mode: 0755
 
 - name: Setup initial and needed configuration for unattended upgrade
@@ -20,13 +20,14 @@
     group: root
     mode: 0644
 
-- name: Clone the Pi-Hole repo
-  ansible.builtin.git:
-    repo: https://github.com/pi-hole/pi-hole.git
-    depth: 1
-    dest: "{{ ansible_env.HOME }}/Downloads/pi-hole"
-    version: master
+- name: download install script
+  ansible.builtin.get_url:
+    url: https://install.pi-hole.net
+    dest: ~/basic-install.sh
+    mode: u+rwx
+  when: not pihole_installed
 
-- name: Run Pi-Hole install script
-  ansible.builtin.shell: "'{{ ansible_env.HOME }}/Downloads/pi-hole/automated install/basic-install.sh' --unattended >> {{ ansible_env.HOME }}/Downloads/pihole_install.log"
-  when: pi_hole_installed
+- name: Run install script
+  ansible.builtin.command:
+    cmd: "~/pihole-install.sh --unattended"
+  when: not pihole_installed
