@@ -5,20 +5,4 @@ pihole_group: root
 
 pihole_path_config: "/etc/pihole"
 
-pihole_custom_dns: [
-  {
-    "192.168.86.1": "router.home.arpa"
-  },
-  {
-    "192.168.86.249": "pve1.home.arpa"
-  },
-  {
-    "192.168.86.193": "pve2.home.arpa"
-  },
-  {
-    "192.168.86.189": "nas.home.arpa"
-  },
-  {
-    "192.168.86.219": "jonas.home.arpa"
-  }
-]
+pihole_custom_dns: []
