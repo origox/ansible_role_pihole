@@ -1,4 +1,5 @@
 ---
+# todo - change to proper user
 pihole_user: root
 pihole_group: root
 

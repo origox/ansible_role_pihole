@@ -2,7 +2,11 @@
 - name: Check if Pi-hole is installed
   ansible.builtin.stat:
     path: "/usr/local/bin/pihole"
-  register: pihole_installed
+  register: pihole_binary
+
+- name: Set fact about Pi-hole is installed or not
+  ansible.builtin.set_fact:
+    pihole_installed: "{{ pihole_binary.stat.exists }}"
 
 - name: Create Pi-Hole configuration directory
   ansible.builtin.file:
@@ -29,5 +33,5 @@
 
 - name: Run install script
   ansible.builtin.command:
-    cmd: "~/pihole-install.sh --unattended"
+    cmd: "~/basic-install.sh --unattended"
   when: not pihole_installed
