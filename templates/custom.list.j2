@@ -1,5 +1,5 @@
 {% for dict_item in pihole_custom_dns %}
-    {% for key, value in dict_item.items() %}
-        {{ key }} {{value}}
-    {% endfor %}
+{%   for key, value in dict_item.items() %}
+{{ key }} {{value}}
+{%   endfor %}
 {% endfor %}
