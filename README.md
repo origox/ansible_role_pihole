@@ -34,6 +34,9 @@ Available variables are listed below, along with default values (see `defaults/m
 
 ## Dependencies
 
+## Misc
+How to generate password - echo -n mypassword | sha256sum | awk '{printf "%s",$1 }' | sha256sum
+
 None.
 
 ## Example Playbook

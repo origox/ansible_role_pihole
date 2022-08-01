@@ -35,3 +35,11 @@
   ansible.builtin.command:
     cmd: "~/basic-install.sh --unattended"
   when: not pihole_installed
+
+- name: Configure custom DNS entries
+  ansible.builtin.template:
+    src: "custom.list.j2"
+    dest: "{{ pihole_path_config }}/custom.list"
+    owner: root
+    group: root
+    mode: 0644
